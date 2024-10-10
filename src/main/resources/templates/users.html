@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head ></head>
+<body>
+	<header ></header>
+	<table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th class="button-headers"></th>
+			<th class="button-headers"></th>
+        </tr>
+        </thead>
+		
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.email}"></td>
+			
+            <td th:if="${user.status == true}">Non disponibile</td>
+			<td th:if="${user.status == false}">Disponibile</td>
+            <td>
+				<a th:href="@{/user/{id}(id=${user.id})}" class="btn btn-sm btn-success">Show</a>
+            </td>
+			<td>
+				<a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-sm btn-success">Delete</a>
+			</td>
+			<td>
+				<a th:href="@{/editUser/{id}(id=${user.id})}" class="btn btn-sm btn-success">Edit</a>
+			</td>
+        </tr>
+        </tbody>
+	</table>
+</body>
+</html>

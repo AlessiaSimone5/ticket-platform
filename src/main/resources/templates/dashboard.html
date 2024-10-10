@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head >
+	<!--css-->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<!--css-->
+	<!-- Bootstrap -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+	<!-- Bootstrap -->
+</head>
+
+<body>
+	
+	<header >
+		
+		
+		
+	<!--fragment navbar-->	
+	<div th:replace="~{fragments/navbar :: navbar}"></div>	
+	<!--/fragment navbar-->
+	
+	</header>
+	<main >
+
+	</main>
+	
+	<div>
+		<table border="1">
+		    <tr>
+		        <th>Titolo</th>
+		        <th>Descrizione</th>
+		        <th>Data creazione</th>
+		        <th>Status</th>
+				<th></th>
+		    </tr>
+		    <tr>
+		        <td>Esempio Titolo</td>
+		        <td>Esempio Descrizione</td>
+		        <td>2024-10-08</td>
+		        <td>Attivo</td>
+				<td><button id="showDetails" href="/ticket/2">Dettagli Ticket</button></td>
+				<td><button id="showDetails" href="/deleteTicket/2">Elimina</button></td>
+		    </tr>
+		    <tr>
+		        <td>Altro Titolo</td>
+		        <td>Un'altra descrizione</td>
+		        <td>2023-05-12</td>
+		        <td>Inattivo</td>
+				<td><button id="showDetails" href="/ticket/2">Dettagli Ticket</button></td>
+				<td><button id="showDetails" href="/deleteTicket/2">Elimina</button></td>
+		    </tr>
+		</table>
+
+	</div>
+
+
+</body>
+
+</html>

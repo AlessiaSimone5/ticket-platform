@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Modifica Utente</title>
+</head>
+<body>
+    <header></header>
+    <div>
+        <form id="edit-form" th:object="${user}" th:action="@{/updateUser/{id}(id=${user.id})}" method="POST">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}">
+			<br>
+
+            <label for="surname">Cognome</label>
+            <input type="text" class="form-control" id="surname" th:field="*{surname}">
+			<br>
+
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" th:field="*{email}">
+			<br>
+
+            <label>Status</label><br>
+            <input type="radio" id="status-available" th:field="*{status}" value="true">
+            <label for="status-available">Disponibile</label>
+
+            <input type="radio" id="status-unavailable" th:field="*{status}" value="false">
+            <label for="status-unavailable">Non Disponibile</label>
+
+            <br>
+			
+			<input type="text" th:field="*{password}" hidden>
+            <input type="submit" value="Update User">
+        </form>
+    </div>
+</body>
+</html>

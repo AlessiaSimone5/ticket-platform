@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head >
+	<!--css-->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<!--css-->
+	<!-- Bootstrap -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+	<!-- Bootstrap -->
+</head>
+<body>
+	<header ></header>
+	<main th:fragment = "navbar">
+
+		<h1 class="text-center text-primary">Ticket-platform</h1>	
+
+
+		
+		<div>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			  <div class="container-fluid">
+			    <a class="navbar-brand" href="#">Home</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+					  <a class="nav-link" href="#">Users</a>
+					</li>
+					
+			      </ul>
+			      <form class="d-flex" role="search">
+			        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			        <button class="btn btn-outline-success" type="submit">Search</button>
+			      </form>
+			    </div>
+			  </div>
+			</nav>
+		</div>
+	</main>
+</body>
+</html>
