@@ -3,6 +3,7 @@ package com.milestone.ticket.platform.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.milestone.ticket.platform.model.Ticket;
 import com.milestone.ticket.platform.model.User;
+import com.milestone.ticket.platform.repository.RoleRepository;
 import com.milestone.ticket.platform.service.TicketService;
 import com.milestone.ticket.platform.service.UserService;
 
@@ -27,6 +29,9 @@ public class TicketController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	RoleRepository roleRepository;
+	
 	@GetMapping("/ticket/{id}")
 	public String ticket (Model model, @PathVariable("id") Integer ticketId) {
 		model.addAttribute("ticket", ticketService.getById(ticketId));
@@ -34,9 +39,15 @@ public class TicketController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String dashboard (Model model) {
+	public String dashboard (Model model, Authentication authentication) {
 		List<Ticket> tickets = ticketService.findAllTickets();
 		model.addAttribute("tickets", tickets);
+		return "/dashboard";	
+	}
+	
+	@GetMapping("/roles")
+	public String roles () {
+		System.out.println(roleRepository.findAll());
 		return "/dashboard";	
 	}
 	

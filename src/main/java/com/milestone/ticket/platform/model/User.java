@@ -24,6 +24,9 @@ public class User {
 	private String email;
 	
 	private boolean status;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
 
 	public int getId() {
 		return id;
@@ -71,6 +74,14 @@ public class User {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 }
 

@@ -3,6 +3,7 @@ package com.milestone.ticket.platform.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.web.AuthorizeRequestsDsl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -16,6 +17,7 @@ public class SecurityConfiguration {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authenticationProvider(authenticationProvider())
         .authorizeHttpRequests()
+        	.requestMatchers("/users").hasAuthority("ADMIN")
             .requestMatchers("/**").authenticated()
             .and()
         .formLogin()
@@ -26,7 +28,7 @@ public class SecurityConfiguration {
         .and().logout()
         .and()
         .csrf().disable();
-return http.build();
+		return http.build();
 	}
 
 	@Bean

@@ -2,11 +2,14 @@ package com.milestone.ticket.platform.security;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.milestone.ticket.platform.model.Role;
 import com.milestone.ticket.platform.model.User;
 
 
@@ -24,9 +27,10 @@ public class DatabaseUserDetails implements UserDetails {
 
 		authorities = new HashSet<GrantedAuthority>();
 
-//		for (Role role : user.getRoles()) {
-//			authorities.add(new SimpleGrantedAuthority(role.getName()));
-//		}
+		List<Role> roles = user.getRoles();
+		for (Role role : roles) {
+			authorities.add(new SimpleGrantedAuthority(role.getRole_name()));
+		}
 	}
 
 
