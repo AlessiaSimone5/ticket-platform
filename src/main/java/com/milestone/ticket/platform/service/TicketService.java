@@ -24,7 +24,6 @@ public class TicketService {
 	public List<Ticket> findAllTicketsByStatus(String status) {
 		
 		return repository.findByStatus(status);
-
 	}
 
 	public Ticket getById(int id) {

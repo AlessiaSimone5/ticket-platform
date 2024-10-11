@@ -1,9 +1,12 @@
 package com.milestone.ticket.platform.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,8 +43,33 @@ public class TicketController {
 	
 	@GetMapping("/dashboard")
 	public String dashboard (Model model, Authentication authentication) {
+		
 		List<Ticket> tickets = ticketService.findAllTickets();
-		model.addAttribute("tickets", tickets);
+	    List<Ticket> operatorTickets = new ArrayList<>();
+
+	    // Authorities dell'utente autenticato
+	    Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+	    // Controlla se l'utente ha il ruolo OPERATOR o ADMIN
+	    boolean isOperator = authorities.stream()
+	                                    .anyMatch(authority -> authority.getAuthority().equals("OPERATOR"));
+	    boolean isAdmin = authorities.stream()
+	                                 .anyMatch(authority -> authority.getAuthority().equals("ADMIN"));
+
+	    // Se l'utente è un OPERATOR, filtriamo solo i suoi ticket
+	    if (isOperator) {
+	        for (Ticket t : tickets) {
+	            if (t.getUser().getEmail().equals(authentication.getName())) {
+	                operatorTickets.add(t);
+	            }
+	        }
+	        model.addAttribute("tickets", operatorTickets);
+	    } 
+	    
+	    // Se l'utente è ADMIN, mostriamo tutti i ticket
+	    if (isAdmin) {
+	        model.addAttribute("tickets", tickets);
+	    }
 		return "/dashboard";	
 	}
 	

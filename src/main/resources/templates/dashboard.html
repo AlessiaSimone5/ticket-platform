@@ -4,7 +4,7 @@
 <head></head>
 <body>
 	<header></header>
-		<a th:href="@{/createTicket}" type="submit" value="Create Ticket">Create Ticket</a>
+		<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/createTicket}" type="submit" value="Create Ticket">Create Ticket</a>
 	<br>
 	<span sec:authentication="principal.authorities"></span>
 	<div sec:authorize="hasAuthority('ADMIN')">
