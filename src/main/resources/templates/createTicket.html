@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Crea Ticket</title>
+</head>
+<body>
+    <header></header>
+    <div>
+        <form id="edit-form" th:object="${ticket}" th:action="@{/postCreateTicket}" method="POST">
+            <label for="title">Titolo</label>
+            <input type="text" class="form-control" id="title" th:field="*{title}">
+			<br>
+
+            <label for="description">Descrizione</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+			<br>
+
+            <input type="text" class="form-control" id="creationDate" th:field="*{creationDate}" hidden>
+			<br>
+
+			<label for="status">Stato:</label>
+
+			<select name="status" id="status" th:field="*{status}">
+			  <option value="da fare">Da fare</option>
+			  <option value="in corso">In corso</option>
+			  <option value="completato">Completato</option>
+			</select>
+
+            <br>
+			
+			<input type="text" th:field="*{user.id}" readonly>
+            <input type="submit" value="Create Ticket">
+        </form>
+    </div>
+</body>
+</html>

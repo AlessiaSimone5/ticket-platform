@@ -4,8 +4,14 @@ package com.milestone.ticket.platform.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,7 +21,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tickets")
 public class Ticket {
-		@Id		
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer id;
 		
 		@Column(nullable = false)	
@@ -24,13 +31,14 @@ public class Ticket {
 		@Column(nullable = false)
 		private String description;
 		
-
+		@CreationTimestamp
 		private LocalDateTime creationDate;
 		
 		private String status;
 		
 		@ManyToOne
 		@JoinColumn(name = "user_id", nullable = false)
+		@JsonBackReference
 		private User user;
 		
 

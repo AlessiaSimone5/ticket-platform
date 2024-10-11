@@ -11,6 +11,7 @@
             <th>Descrizione</th>
 			<th>Data</th>
             <th>Status</th>
+			<th>Assegnato a</th>
             <th class="button-headers"></th>
         </tr>
         </thead>
@@ -21,6 +22,7 @@
             <td th:text="${ticket.description}"></td>
             <td th:text="${ticket.creationDate}"></td>
 			<td th:text="${ticket.status}"></td>
+			<td th:text="${ticket.user.getName()}"></td>
             <td>
             </td>
         </tr>

@@ -32,11 +32,6 @@ public class UserController {
 		return "login";	
 	}
 	
-	@GetMapping("/dashboard")
-	public String hello () {
-		return "dashboard";	
-	}
-	
 	@GetMapping("/user/{id}")
 	public String user (Model model, @PathVariable("id") Integer userId) {
 		model.addAttribute("user", userService.getById(userId));

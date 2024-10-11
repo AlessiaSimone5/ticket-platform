@@ -42,4 +42,9 @@ public class TicketService {
 	public void deleteTicketById(int id) {
 		repository.deleteById(id);
 	}
+
+	public Ticket create(Ticket createTicket) {
+		return repository.save(createTicket);
+		
+	}
 }
