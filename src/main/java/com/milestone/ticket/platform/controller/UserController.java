@@ -23,15 +23,6 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@GetMapping("/login")
-	public String login () {
-		for(User u : userService.findAllUsers())
-		{
-			System.out.println(u.getName());
-		}
-		return "login";	
-	}
-	
 	@GetMapping("/user/{id}")
 	public String user (Model model, @PathVariable("id") Integer userId) {
 		model.addAttribute("user", userService.getById(userId));
