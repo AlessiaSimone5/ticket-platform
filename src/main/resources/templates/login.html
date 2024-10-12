@@ -1,57 +1,40 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html xmlns:th="http://www.thymeleaf.org/" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
-    <!--
-    <th:block th:replace="fragments/tailwind :: tailwind"></th:block>
-    -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-<section class="bg-gray-50">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                    Login
-                </h1>
+<section class="bg-light">
+    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="card shadow-sm" style="width: 100%; max-width: 400px;">
+            <div class="card-body">
+                <h1 class="card-title text-center mb-4">Login</h1>
 
                 <!--LOGIN FORM -->
-                <form class="space-y-4 md:space-y-6 group" th:action="@{/login}" method="post" id="login-form" novalidate>
-                    <div th:if="${param.error}" class="text-red-500">
+                <form th:action="@{/login}" method="post" id="login-form" novalidate>
+                    <div th:if="${param.error}" class="alert alert-danger">
                         Credenziali errate. Per favore riprova.
                     </div>
-                    <div>
-                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900">
-                            Username
-                        </label>
-                        <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 block w-full p-2.5" placeholder="username" required="">
-                        <div class="invalid-feedback flex flex-row justify-start items-center mt-2">
-                            <span id="username-invalid-feedback" class="text-red-500"></span>
-                        </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="username" required>
+                        <div class="invalid-feedback" id="username-invalid-feedback"></div>
                     </div>
-                    <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">
-                            Password
-                        </label>
-                        <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
-                        <div class="invalid-feedback flex flex-row justify-start items-center mt-2">
-                            <span id="password-invalid-feedback" class="text-red-500"></span>
-                        </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="••••••••" class="form-control" required>
+                        <div class="invalid-feedback" id="password-invalid-feedback"></div>
                     </div>
-
-
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-start">
-                            <div class="flex items-center h-5">
-                                <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300">
-                            </div>
-                        </div>
+                    <div class="form-group form-check">
+                        <input id="remember" type="checkbox" class="form-check-input">
+                        <label class="form-check-label" for="remember">Ricordami</label>
                     </div>
-
                     <!--SUBMIT BUTTON-->
-                    <button type="submit" id="submit" class="w-full text-white bg-blue-600 hover:bg-blue-900 transition-all focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" id="submit" class="btn btn-warning btn-block">
                         Log in
                     </button>
                 </form>
@@ -60,5 +43,8 @@
     </div>
 </section>
 <script th:src="@{/js/loginValidation.js}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

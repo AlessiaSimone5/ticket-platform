@@ -1,10 +1,34 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-<head></head>
+<head>
+	<!--Bootstrap-->  
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+	<!--/ Bootstrap--> 
+	<title></title>
+</head>
 <body>
-	<header></header>
-		<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/createTicket}" type="submit" value="Create Ticket">Create Ticket</a>
+	<header >
+		
+<!--navbar-->
+<nav  th:fragment = "navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#">Home</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+	      <form class="d-flex" role="search">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-outline-success" type="submit">Search</button>
+	      </form>
+	    </div>
+<!--navbar-->
+
+	</header>
+		<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/createTicket}" type="submit" value="Create Ticket" class="btn btn-warning text-dark">Create Ticket</a>
 	<br>
 	<span sec:authentication="principal.authorities"></span>
 	<div sec:authorize="hasAuthority('ADMIN')">
@@ -13,7 +37,7 @@
 	<div sec:authorize="hasAuthority('OPERATOR')">
 	  This content is only shown to operators.
 	</div>
-	<input th:text="${username}"></input>
+
 	<br>
 	<table class="table table-striped table-hover">
         <thead>
@@ -48,7 +72,7 @@
 				<a th:href="@{/deleteTicket/{id}(id=${ticket.id})}" class="btn btn-sm btn-danger">Delete</a>
 			</td>
 			<td>
-				<a th:href="@{/editTicket/{id}(id=${ticket.id})}" class="btn btn-sm btn-warning">Edit</a>
+				<a th:href="@{/editTicket/{id}(id=${ticket.id})}" class="btn btn-sm btn-info text-light">Edit</a>
 			</td>
         </tr>
         </tbody>

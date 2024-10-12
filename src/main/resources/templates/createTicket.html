@@ -1,35 +1,45 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
+	<!--Bootstrap --> 
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+	<!--/Bootstrap --> 
     <title>Crea Ticket</title>
 </head>
 <body>
     <header></header>
     <div>
-        <form id="edit-form" th:object="${ticket}" th:action="@{/postCreateTicket}" method="POST">
-            <label for="title">Titolo</label>
-            <input type="text" class="form-control" id="title" th:field="*{title}">
-			<br>
 
-            <label for="description">Descrizione</label>
-            <input type="text" class="form-control" id="description" th:field="*{description}">
-			<br>
+			<form id="edit-form" th:object="${ticket}" th:action="@{/createTicket}" method="POST">
+			<div class="mb-3 col-sm-5">
+			  <label for="title" class="form-label ">Titolo</label>
+			  <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Inserisci un titolo">
+			</div>
+
+			<div class="mb-3 col-sm-7">
+			  <label for="description" class="form-label">Descrizione</label>
+			  <input type="text" class="form-control" id="description" th:field="*{description}" placeholder="Inserisci una descrizione">
+			</div>
 
             <input type="text" class="form-control" id="creationDate" th:field="*{creationDate}" hidden>
 			<br>
 
 			<label for="status">Stato:</label>
-
-			<select name="status" id="status" th:field="*{status}">
+			
+			<div class="col-sm-1">
+			<select name="status" id="status" th:field="*{status}" class="form-select " aria-label="Small select example">
 			  <option value="da fare">Da fare</option>
 			  <option value="in corso">In corso</option>
 			  <option value="completato">Completato</option>
 			</select>
-
+			</div>
             <br>
 			
-			<input type="text" th:field="*{user.id}" readonly>
-            <input type="submit" value="Create Ticket">
+			<div class="mb-3 col-1">
+			  <input type="text" th:field="*{user.id}" readonly class="form-control" aria-label="" >
+			</div>
+
+            <input class="btn btn-warning text-dark" type="submit" value="Create Ticket">
         </form>
     </div>
 </body>

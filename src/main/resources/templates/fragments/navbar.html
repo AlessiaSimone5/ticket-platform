@@ -1,24 +1,24 @@
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head >
-	<!--css-->
+	css
 	<link rel="stylesheet" th:href="@{/css/style.css}">
-	<!--css-->
-	<!-- Bootstrap -->
+	css
+	 Bootstrap 
 	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
-	<!-- Bootstrap -->
+	 Bootstrap 
 </head>
 <body>
 	<header ></header>
-	<main th:fragment = "navbar">
+	<main>
 
 		<h1 class="text-center text-primary">Ticket-platform</h1>	
 
 
 		
 		<div>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<nav  th:fragment = "navbar" class="navbar navbar-expand-lg bg-body-tertiary">
 			  <div class="container-fluid">
 			    <a class="navbar-brand" href="#">Home</a>
 			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,3 +42,110 @@
 	</main>
 </body>
 </html>
+-->
+<!--<!DOCTYPE HTML>
+
+<html xmlns="http://www.thymeleaf.org">
+
+<body>
+
+	<header>
+		<th:block th:fragment="head">
+		<nav th:fragment="navbar(userId)" class="navbar navbar-expand-sm bg-body-tertiary">
+			<div class="container-fluid">
+
+				 Title
+				<a class="navbar-brand" th:href="@{/tickets/list-tickets}">Tickets</a>
+
+				 Title 
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				 Menu' 
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav gap-2">
+
+						 List tickets 
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/tickets/list-tickets}">List
+								Tickets</a>
+						</li>
+
+						 Create tickets 
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/tickets/create}"
+								sec:authorize="hasAuthority('ADMIN')">Create Tickets</a>
+						</li>
+
+						 Check of logged user 
+						<li class="nav-item d-sm-block d-md-none fw-bold pt-2" sec:authorize="hasAuthority('ADMIN')">
+							ADMIN : <span sec:authentication="name"></span>
+						</li>
+
+						 Check of logged user 
+						<li class="nav-item d-sm-block d-md-none fw-bold pt-2" sec:authorize="hasAuthority('OPERATOR')">
+							OPERATOR : <span sec:authentication="name"></span>
+						</li>
+
+						 Profile settings 
+						<a th:href="@{/users/user-profile/edit/{id}(id=userId)}" style="text-decoration: none;">
+							<li class="nav-item d-sm-block d-md-none fw-bold pt-2"
+								sec:authorize="hasAuthority('OPERATOR')">
+								Profile Settings
+							</li>
+						</a>
+
+						 Exit 
+						<li class="nav-item d-sm-block d-md-none fw-bold pt-2" sec:authorize="hasAuthority('OPERATOR')">
+							Exit
+						</li>
+
+					</ul>
+				</div>
+
+
+				 Check of logged user 
+				<div class="d-none d-md-block fw-bold" sec:authorize="hasAuthority('ADMIN')">
+					ADMIN : <span sec:authentication="name"></span>
+				</div>
+
+				<div class="d-none d-md-flex fw-bold gap-2 align-items-center" sec:authorize="hasAuthority('OPERATOR')">
+
+					 Setting logged user 
+					<div class="btn-group">
+
+						 Button 
+						<button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Setting
+						</button>
+
+						 Menu 
+						<ul class="dropdown-menu">
+							
+							 Profile settings 
+							<a th:href="@{/users/user-profile/edit/{id}(id=${userId})}" style="text-decoration: none;">
+								<li class="dropdown-item">
+									Profile Settings
+								</li>
+							</a>
+							<li><a class="dropdown-item" href="#">Exit</a></li>
+						</ul>
+
+					</div>
+
+					<div>
+						OPERATOR : <span sec:authentication="name"></span>
+					</div>
+				</div>
+
+			</div>
+		</nav>
+		</th:block>
+	</header>
+
+</body>
+
+</html>-->

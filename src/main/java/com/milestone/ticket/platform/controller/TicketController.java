@@ -123,8 +123,8 @@ public class TicketController {
 		return "/createTicket";	
 	}
 	
-	@PostMapping("/postCreateTicket")
-	public String postCreateTicket (@ModelAttribute("ticket") Ticket formTicket, Model model) {
+	@PostMapping("/createTicket")
+	public String createTicket (@ModelAttribute("ticket") Ticket formTicket, Model model) {
 		System.out.println("***********QUI**********");
 		System.out.println(formTicket);
 		ticketService.create(formTicket);
