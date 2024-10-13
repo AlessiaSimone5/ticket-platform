@@ -7,7 +7,7 @@
     <title>Crea Ticket</title>
 </head>
 <body>
-    <header></header>
+    <header th:insert="~{fragments/navbar :: navbar}"></header>
     <div>
 
 			<form id="edit-form" th:object="${ticket}" th:action="@{/createTicket}" method="POST">

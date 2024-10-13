@@ -1,37 +1,48 @@
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifica Ticket</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
 </head>
+<header th:insert="~{fragments/navbar :: navbar}"></header>
+
 <body>
-    <header></header>
-    <div>
+    <div class="container mt-4">
         <form id="edit-form" th:object="${ticket}" th:action="@{/updateTicket/{id}(id=${ticket.id})}" method="POST">
-            <label for="title">Titolo</label>
-            <input type="text" class="form-control" id="title" th:field="*{title}">
-			<br>
+            <div class="mb-3">
+                <label for="title" class="form-label">Titolo</label>
+                <input type="text" class="form-control" id="title" th:field="*{title}" required>
+            </div>
 
-            <label for="description">descrizione</label>
-            <input type="text" class="form-control" id="description" th:field="*{description}">
-			<br>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrizione</label>
+                <input type="text" class="form-control" id="description" th:field="*{description}" required>
+            </div>
 
-            <label for="creationDate">Data creazioe</label>
-            <input type="text" class="form-control" id="creationDate" th:field="*{creationDate}">
-			<br>
+            <div class="mb-3">
+                <label for="creationDate" class="form-label">Data Creazione</label>
+                <input type="date" class="form-control" id="creationDate" th:field="*{creationDate}" required>
+            </div>
 
-			<label for="status">Stato:</label>
+            <div class="mb-3">
+                <label for="status" class="form-label">Stato</label>
+                <select class="form-select" id="status" th:field="*{status}" required>
+                    <option value="" disabled selected>Seleziona stato...</option>
+                    <option value="da fare">Da fare</option>
+                    <option value="in corso">In corso</option>
+                    <option value="completato">Completato</option>
+                </select>
+            </div>
+			<div class="col-sm-1">
+				<input type="text" th:field="*{user.id}" readonly class="form-control mb-3" placeholder="User ID" aria-label="User ID">			
+			</div>
 
-			<select name="status" id="status" th:field="*{status}">
-			  <option value="da fare">Da fare</option>
-			  <option value="in corso">In corso</option>
-			  <option value="completato">Completato</option>
-			</select>
-
-            <br>
-			
-			<input type="text" th:field="*{user.id}" readonly>
-            <input type="submit" value="Update Ticket">
+            <button type="submit" class="btn btn-warning text-dark">Aggiorna Ticket</button>
         </form>
     </div>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
