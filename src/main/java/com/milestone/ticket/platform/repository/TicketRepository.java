@@ -10,5 +10,5 @@ import com.milestone.ticket.platform.model.Ticket;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Integer> {
 	
-	public List<Ticket> findByStatus(String status);
+	public List<Ticket> findByStatus(String status);	
 }

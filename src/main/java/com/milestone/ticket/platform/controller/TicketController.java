@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.milestone.ticket.platform.model.Ticket;
 import com.milestone.ticket.platform.model.User;
 import com.milestone.ticket.platform.repository.RoleRepository;
@@ -129,7 +128,6 @@ public class TicketController {
 		System.out.println(formTicket);
 		ticketService.create(formTicket);
 		return "redirect:/dashboard";
-	}
-	
-	
+	}	
 }
+

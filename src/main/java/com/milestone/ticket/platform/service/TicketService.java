@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.milestone.ticket.platform.model.Ticket;
 import com.milestone.ticket.platform.repository.TicketRepository;
-import com.milestone.ticket.platform.repository.UserRepository;
 
 @Service
 public class TicketService {
