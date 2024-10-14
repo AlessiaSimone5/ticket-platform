@@ -31,6 +31,7 @@ public class NoteController {
 		model.addAttribute("note", note);
 		return "/note";	
 	}
+	
 
 	
 }
