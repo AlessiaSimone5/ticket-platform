@@ -24,9 +24,9 @@
 
             <div class="mb-3">
                 <label for="creationDate" class="form-label">Data Creazione</label>
-                <input type="date" class="form-control" id="creationDate" th:field="*{creationDate}" required>
+                <input type="datetime" class="form-control" id="creationDate" th:field="*{creationDate}" readonly>
             </div>
-
+			
             <div class="mb-3">
                 <label for="status" class="form-label">Stato</label>
                 <select class="form-select" id="status" th:field="*{status}" required>

@@ -32,6 +32,8 @@
                 <th class="button-headers">Show</th>
                 <th class="button-headers">Delete</th>
                 <th class="button-headers">Edit</th>
+				<th class="button-headers">Note</th>
+
             </tr>
         </thead>
         <tbody>
@@ -41,6 +43,8 @@
                 <td th:text="${ticket.creationDate}"></td>
                 <td th:text="${ticket.status}"></td>
                 <td th:text="${ticket.user.getName()}"></td>
+				
+				
                 <td>
                     <a th:href="@{/ticket/{id}(id=${ticket.id})}" class="btn btn-sm btn-success">Show</a>
                 </td>
@@ -50,6 +54,9 @@
                 <td>
                     <a th:href="@{/editTicket/{id}(id=${ticket.id})}" class="btn btn-sm btn-info text-light">Edit</a>
                 </td>
+				<td>
+				    <a th:href="@{/note/{id}(id=${ticket.id})}" class="btn btn-sm btn-success">Note</a>
+				</td>
             </tr>
         </tbody>
     </table>

@@ -3,6 +3,7 @@ package com.milestone.ticket.platform.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -41,7 +42,7 @@ public class Ticket {
 		@JsonBackReference
 		private User user;
 		
-
+		
 		public User getUser() {
 			return user;
 		}

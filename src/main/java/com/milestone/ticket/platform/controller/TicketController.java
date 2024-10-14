@@ -97,7 +97,6 @@ public class TicketController {
 		return "redirect:/dashboard";
 	}
 	
-	
 	@GetMapping("/createTicket")
 	public String createTicket (Model model) {
 		Ticket ticket = new Ticket();
@@ -124,10 +123,11 @@ public class TicketController {
 	
 	@PostMapping("/createTicket")
 	public String createTicket (@ModelAttribute("ticket") Ticket formTicket, Model model) {
-		System.out.println("***********QUI**********");
-		System.out.println(formTicket);
 		ticketService.create(formTicket);
 		return "redirect:/dashboard";
 	}	
 }
+
+
+
 

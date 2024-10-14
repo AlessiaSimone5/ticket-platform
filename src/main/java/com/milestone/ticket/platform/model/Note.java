@@ -1,6 +1,9 @@
 package com.milestone.ticket.platform.model;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +23,6 @@ public class Note {
 	private Integer id;
 
 	@NotNull(message="The description of category cannot be null!")
-//	@Size(min = 2, max = 255, message="Description must have at least 2 charachters and a maximum of 255")
 	private String description;
 
 	private LocalDateTime createDate;
@@ -28,7 +30,7 @@ public class Note {
 
 	@ManyToOne
 	@JoinColumn(name = "ticket_id", nullable = false)
-//	@JsonBackReference // permette di aggirare la ricorsione infinita tra le entità
+	@JsonBackReference // permette di aggirare la ricorsione infinita tra le entità
 	private Ticket ticket;
 
 
