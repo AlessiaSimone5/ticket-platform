@@ -2,6 +2,8 @@ package com.milestone.ticket.platform.model;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
@@ -25,14 +27,28 @@ public class Note {
 	@NotNull(message="The description of category cannot be null!")
 	private String description;
 
+	@CreationTimestamp
 	private LocalDateTime createDate;
 
 
 	@ManyToOne
 	@JoinColumn(name = "ticket_id", nullable = false)
-	@JsonBackReference // permette di aggirare la ricorsione infinita tra le entità
+	@JsonBackReference
 	private Ticket ticket;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)
+	@JsonBackReference
+	private User creator;
 
+
+	public User getCreator() {
+		return creator;
+	}
+
+	public void setCreator(User creator) {
+		this.creator = creator;
+	}
 
 	public Integer getId() {
 		return id;

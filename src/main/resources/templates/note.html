@@ -8,22 +8,23 @@
 </head>
 <body>
 	<header th:insert="~{fragments/navbar :: navbar}"></header>
-	<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/CreateNote}" class="btn btn-warning text-dark">Create Note</a>
-
+	<a th:href="@{/createNote/{ticketId}(ticketId=${ticketId})}" class="btn btn-warning text-dark">Create Note</a>
 	
 	<table class="table table-striped table-hover">
         <thead>
         <tr>
             <th>Descrizione</th>
 			<th>Data</th>
+			<th>Autore</th>
             <th class="button-headers"></th>
         </tr>
         </thead>
 		
         <tbody>
-        <tr>
+        <tr th:each="note : ${notes}">
             <td th:text="${note.description}"></td>
             <td th:text="${note.createDate}"></td>
+			<td th:text="${note.creator.getName()}"></td>
             <td>
             </td>
         </tr>

@@ -11,4 +11,7 @@ import com.milestone.ticket.platform.model.Ticket;
 public interface TicketRepository extends JpaRepository<Ticket, Integer> {
 	
 	public List<Ticket> findByStatus(String status);	
+	
+	List<Ticket> findByTitleContainingIgnoreCase(String title);
+
 }

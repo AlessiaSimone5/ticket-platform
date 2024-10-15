@@ -1,34 +1,28 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML> 
 <html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-	<!--Bootstrap --> 
-	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
-	<!--/Bootstrap --> 
+    <!-- Bootstrap --> 
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+    <!-- /Bootstrap --> 
     <title>Crea Note</title>
 </head>
 <body>
     <header th:insert="~{fragments/navbar :: navbar}"></header>
     <div>
+        <form id="edit-form" th:object="${note}" th:action="@{/createNote}" method="POST">
+            <div class="mb-3 col-sm-7">
+                <label for="description" class="form-label">Descrizione</label>
+                <input type="text" class="form-control" id="description" th:field="*{description}" placeholder="Inserisci una descrizione">
+            </div>
 
-			<form id="edit-form" th:object="${note}" th:action="@{/CreateNote}" method="POST">
-
-			<div class="mb-3 col-sm-7">
-			  <label for="description" class="form-label">Descrizione</label>
-			  <input type="text" class="form-control" id="description" th:field="*{description}" placeholder="Inserisci una descrizione">
-			</div>
-
-            <input type="text" class="form-control" id="creationDate" th:field="*{creationDate}" hidden>
-			<br>
-
-			<label for="status">Stato:</label>
-			
-            <br>
-			
-			<div class="mb-3 col-1">
-			  <input type="text" th:field="*{user.id}" readonly class="form-control" aria-label="" >
-			</div>
-
-            <input class="btn btn-warning text-dark" type="submit" value="Create Ticket">
+            <input type="text" class="form-control" id="createDate" th:field="*{createDate}" hidden>
+			<label value="*{ticket.title}"></label>
+			<input type="text" class="form-control" id="ticketId" th:field="*{ticket.id}" hidden>
+			<input type="text" class="form-control" id="creatorId" th:field="*{creator.id}" hidden>
+            
+            <!-- Se necessario, aggiungi qui ulteriori input o elementi -->
+            
+            <button class="btn btn-warning text-dark" type="submit">Crea Nota</button>
         </form>
     </div>
 </body>

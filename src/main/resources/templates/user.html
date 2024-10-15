@@ -1,31 +1,41 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-<head ></head>
+<head >
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+	<title>Profilo Utente</title>
+</head>
 <body>
-	<header ></header>
-	<table class="table table-striped table-hover">
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Email</th>
-            <th>Status</th>
-			<th>Role</th>
-            <th class="button-headers"></th>
-        </tr>
-        </thead>
+	<header th:insert="~{fragments/navbar :: navbar}">
+	</header>
+	<div class="alert alert-danger">
+	    <label>
+		</label>
+	</div>
+	<form id="edit-form" th:object="${user}" th:action="@{/updateUser/{id}(id=${user.id})}" method="POST">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}" readonly>
+		<br>
+
+        <label for="surname">Cognome</label>
+        <input type="text" class="form-control" id="surname" th:field="*{surname}" readonly>
+		<br>
+
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" th:field="*{email}" readonly>
+		<br>
+
+        <label>Status</label><br>
+        <input type="radio" id="status-available" th:field="*{status}" value="true">
+        <label for="status-available">Disponibile</label>
+
+        <input type="radio" id="status-unavailable" th:field="*{status}" value="false">
+        <label for="status-unavailable">Non Disponibile</label>
+
+        <br>
 		
-        <tbody>
-        <tr>
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.name}"></td>
-            <td th:text="${user.surname}"></td>
-            <td th:text="${user.status}"></td>
-            <td>
-            </td>
-        </tr>
-        </tbody>
-	</table>
+		<input type="text" th:field="*{password}" hidden>
+        <input type="submit" value="Update Status">
+	</form>
 </body>
 </html>

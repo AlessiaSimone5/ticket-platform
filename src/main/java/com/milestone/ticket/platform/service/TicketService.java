@@ -43,6 +43,10 @@ public class TicketService {
 
 	public Ticket create(Ticket createTicket) {
 		return repository.save(createTicket);
-		
+	}
+	
+	public List<Ticket> searchByTitle(String query) {
+	    return repository.findByTitleContainingIgnoreCase(query);
 	}
 }
+

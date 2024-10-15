@@ -41,4 +41,8 @@ public class UserService {
 	public void deleteUserById(int id) {
 		repository.deleteById(id);
 	}
+
+	public User getByEmail(String userEmail) {
+		return repository.findByEmail(userEmail).get();
+	}
 }

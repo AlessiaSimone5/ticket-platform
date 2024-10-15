@@ -23,5 +23,9 @@ public class NoteService {
 		return repository.findAll();
 
 	}
+
+    public void save(Note note) {
+        repository.save(note); // Assicurati di salvare il note nel repository
+    }
 	
 }
